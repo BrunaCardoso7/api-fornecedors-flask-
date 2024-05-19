@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Detalhes do Fornecedor</title>
+</head>
+    <body>
+        <h1>Detalhes do Fornecedor</h1>
+        <p>Fornecedor: {{ fornecedor.Fornecedor }}</p>
+        <p>Telefone: {{ fornecedor.telefone }}</p>
+        <p>Revendedor: {{ fornecedor.revendedor }}</p>
+        <!-- Formulário para deletar o fornecedor -->
+        <form id="deleteForm" action="{{ url_for('routes.delete_fornecedor', fornecedor_id=fornecedor.id) }}" method="post">
+            <input type="submit" value="Deletar" onclick="return confirmarDelecao()">
+        </form>
+        <!-- Botão para cancelar -->
+        <a href="{{ url_for('routes.fornecedores') }}" class="btn btn-primary">Cancelar</a>
+        <!-- Script JavaScript para confirmar a deleção -->
+        <script>
+            function confirmarDelecao() {
+            return confirm('Tem certeza que deseja deletar este registro?');
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Search Fornecedor</title>
+<!-- Bootstrap core CSS -->
+<link href="https://getbootstrap.com//docs/5.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-
+EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+    <body>
+        <div class="container mt-5">
+            <div class="card">
+                <div class="card-body">
+                    <h1>Busca Fornecedor</h1>
+                    <form action="{{ url_for('routes.search_fornecedor') }}" method="POST">
+                    <label for="search">Pesquisar fornecedor por nome:</label>
+                    <input type="text" id="search" name="search">
+                    <input type="submit" value="Pesquisar" class="btn btn-success">
+                    </form>
+                    <a href="{{ url_for('routes.welcome') }}" class="btn btn-danger">Retornar</a>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

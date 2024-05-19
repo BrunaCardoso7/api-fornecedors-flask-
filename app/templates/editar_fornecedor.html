@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Bootstrap core CSS -->
+        <link href="https://getbootstrap.com//docs/5.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-
+        EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <title>Editar Fornecedor</title>
+    </head>
+    <body>
+        <h1>Editar Fornecedor</h1>
+        <!-- Aqui você pode adicionar um formulário com os campos do fornecedor -->
+        <!-- Exemplo de código para um formulário de edição -->
+        <form action="{{ url_for('routes.update_fornecedor', fornecedor_id=fornecedor_id) }}" method="post">
+            <!-- Campos do fornecedor -->
+            <label for="nome">Nome:</label>
+            <input type="text" id="Fornecedor" name="Fornecedor" value="{{ fornecedor.Fornecedor }}"><br><br>
+            <label for="telefone">Telefone:</label>
+            <input type="text" id="telefone" name="telefone" value="{{ fornecedor.telefone }}"><br><br>
+            <label for="revendedor">Revendedor:</label>
+            <input type="text" id="revendedor" name="revendedor" value="{{ fornecedor.revendedor }}"><br><br>
+            <!-- Botão de envio -->
+            <input type="submit" value="Salvar Alterações">
+            <a href="{{ url_for('routes.welcome') }}" class="btn btn-primary">Retornar</a>
+        </form>
+    </body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lista de Produtos</title>
+<!-- Bootstrap core CSS -->
+<link href="https://getbootstrap.com//docs/5.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-
+EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+    <body>
+        <div class="container mt-5">
+            <div class="card">
+                <h1>Lista de Produtos</h1>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Produto</th>
+                            <th>Fornecedor</th>
+                            <th>Telefone</th>
+                            <th>Revendedor</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for produto in produtos %}
+                        <tr>
+                            <td>{{ produto.IdProduto }}</td>
+                            <td>{{ produto.Produto }}</td>
+                            <td>{{ produto.Fornecedor }}</td>
+                            <td>{{ produto.Telefone }}</td>
+                            <td>{{ produto.Revendedor }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                <div class="card-body">
+                    <a href="{{ url_for('routes.welcome') }}" class="btn btn-danger">Retornar</a>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

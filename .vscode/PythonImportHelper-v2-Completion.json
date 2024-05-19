@@ -1,0 +1,321 @@
+[
+    {
+        "label": "session",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "render_template",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "redirect",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "url_for",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "session",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "request",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "Usuario",
+        "importPath": "app.models.Usuario",
+        "description": "app.models.Usuario",
+        "isExtraImport": true,
+        "detail": "app.models.Usuario",
+        "documentation": {}
+    },
+    {
+        "label": "authenticate",
+        "importPath": "app.controllers.auth",
+        "description": "app.controllers.auth",
+        "isExtraImport": true,
+        "detail": "app.controllers.auth",
+        "documentation": {}
+    },
+    {
+        "label": "logout",
+        "importPath": "app.controllers.auth",
+        "description": "app.controllers.auth",
+        "isExtraImport": true,
+        "detail": "app.controllers.auth",
+        "documentation": {}
+    },
+    {
+        "label": "Fornecedor",
+        "importPath": "app.models.fornecedor",
+        "description": "app.models.fornecedor",
+        "isExtraImport": true,
+        "detail": "app.models.fornecedor",
+        "documentation": {}
+    },
+    {
+        "label": "Produto",
+        "importPath": "app.models.Produto",
+        "description": "app.models.Produto",
+        "isExtraImport": true,
+        "detail": "app.models.Produto",
+        "documentation": {}
+    },
+    {
+        "label": "db",
+        "importPath": "app.models",
+        "description": "app.models",
+        "isExtraImport": true,
+        "detail": "app.models",
+        "documentation": {}
+    },
+    {
+        "label": "Fornecedor",
+        "importPath": "app.models",
+        "description": "app.models",
+        "isExtraImport": true,
+        "detail": "app.models",
+        "documentation": {}
+    },
+    {
+        "label": "create_app",
+        "importPath": "app",
+        "description": "app",
+        "isExtraImport": true,
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "authenticate",
+        "kind": 2,
+        "importPath": "app.controllers.auth",
+        "description": "app.controllers.auth",
+        "peekOfCode": "def authenticate(username, password):\n    user = Usuario.query.filter_by(usuario=username, senha=password).first()\n    if user:\n        session['username'] = username\n        session['user_type'] = user.tipo\n        return True\n    else:\n        return False\ndef logout():\n    session.pop('username', None)",
+        "detail": "app.controllers.auth",
+        "documentation": {}
+    },
+    {
+        "label": "logout",
+        "kind": 2,
+        "importPath": "app.controllers.auth",
+        "description": "app.controllers.auth",
+        "peekOfCode": "def logout():\n    session.pop('username', None)\n    session.pop('user_type', None)",
+        "detail": "app.controllers.auth",
+        "documentation": {}
+    },
+    {
+        "label": "Produto",
+        "kind": 6,
+        "importPath": "app.models.Produto",
+        "description": "app.models.Produto",
+        "peekOfCode": "class Produto(db.Model):\n    id = db.Column(db.Integer, primary_key=True)\n    produto = db.Column(db.String(255))\n    idfornecedor = db.Column(db.Integer, db.ForeignKey('fornecedor.id')) # Chave estrangeira para o fornecedor\n# Define o relacionamento com o fornecedor\n    fornecedor = db.relationship('Fornecedor', backref='produtos')\n    def __repr__(self):\n        return f\"<Produto {self.produto}>\"",
+        "detail": "app.models.Produto",
+        "documentation": {}
+    },
+    {
+        "label": "Usuario",
+        "kind": 6,
+        "importPath": "app.models.Usuario",
+        "description": "app.models.Usuario",
+        "peekOfCode": "class Usuario(db.Model):\n    id = db.Column(db.Integer, primary_key=True)\n    usuario = db.Column(db.String(15))\n    senha = db.Column(db.String(255))\n    tipo = db.Column(db.String(255))",
+        "detail": "app.models.Usuario",
+        "documentation": {}
+    },
+    {
+        "label": "Fornecedor",
+        "kind": 6,
+        "importPath": "app.models.fornecedor",
+        "description": "app.models.fornecedor",
+        "peekOfCode": "class Fornecedor(db.Model):\n    id = db.Column(db.Integer, primary_key=True)\n    Fornecedor = db.Column(db.String(255))\n    telefone = db.Column(db.String(20))\n    revendedor = db.Column(db.String(255))",
+        "detail": "app.models.fornecedor",
+        "documentation": {}
+    },
+    {
+        "label": "index",
+        "kind": 2,
+        "importPath": "app.routes.home",
+        "description": "app.routes.home",
+        "peekOfCode": "def index():\n    return render_template('login.html')\n# Rota para a autenticação do usuário\n@routes_bp.route('/auth', methods=['GET', 'POST'])\ndef login():\n    if request.method == 'POST':\n        username = request.form['username']\n        password = request.form['password']\n        if authenticate(username, password): # Chama a função authenticate corretamente\n            print(\"Autenticação bem-sucedida\")",
+        "detail": "app.routes.home",
+        "documentation": {}
+    },
+    {
+        "label": "login",
+        "kind": 2,
+        "importPath": "app.routes.home",
+        "description": "app.routes.home",
+        "peekOfCode": "def login():\n    if request.method == 'POST':\n        username = request.form['username']\n        password = request.form['password']\n        if authenticate(username, password): # Chama a função authenticate corretamente\n            print(\"Autenticação bem-sucedida\")\n            return redirect(url_for('routes.welcome')) # Redireciona para /welcome se a autenticação for bem-sucedida\n        else:\n            return render_template('login.html', error=\"Invalid username or password\")\n    else:",
+        "detail": "app.routes.home",
+        "documentation": {}
+    },
+    {
+        "label": "welcome",
+        "kind": 2,
+        "importPath": "app.routes.home",
+        "description": "app.routes.home",
+        "peekOfCode": "def welcome():\n    if 'username' in session:\n        return render_template('welcome.html', username=session['username'], user_type=session['user_type'])\n    else:\n        return redirect(url_for('login'))\n# Rota para logout do usuário\n@routes_bp.route('/logout')\ndef logout():\n    logout() # Chama a função logout corretamente\n    return redirect(url_for('login'))",
+        "detail": "app.routes.home",
+        "documentation": {}
+    },
+    {
+        "label": "logout",
+        "kind": 2,
+        "importPath": "app.routes.home",
+        "description": "app.routes.home",
+        "peekOfCode": "def logout():\n    logout() # Chama a função logout corretamente\n    return redirect(url_for('login'))\n# Rota para a página de fornecedores\nfrom app.models import Fornecedor # Importe o modelo Fornecedor\n@routes_bp.route('/fornecedores')\ndef fornecedores():\n    fornecedores = Fornecedor.query.all() # Buscar todos os fornecedores do banco de dados\n    return render_template('fornecedores.html', fornecedores=fornecedores)\n@routes_bp.route('/editar_fornecedor/<int:fornecedor_id>')",
+        "detail": "app.routes.home",
+        "documentation": {}
+    },
+    {
+        "label": "fornecedores",
+        "kind": 2,
+        "importPath": "app.routes.home",
+        "description": "app.routes.home",
+        "peekOfCode": "def fornecedores():\n    fornecedores = Fornecedor.query.all() # Buscar todos os fornecedores do banco de dados\n    return render_template('fornecedores.html', fornecedores=fornecedores)\n@routes_bp.route('/editar_fornecedor/<int:fornecedor_id>')\ndef edit_fornecedor(fornecedor_id):\n    fornecedor = Fornecedor.query.get_or_404(fornecedor_id) # Buscar o fornecedor com o ID fornecido\n    return render_template('editar_fornecedor.html', fornecedor=fornecedor, fornecedor_id=fornecedor_id)\n@routes_bp.route('/atualizar_fornecedor/<int:fornecedor_id>', methods=['POST'])\ndef update_fornecedor(fornecedor_id):\n    fornecedor = Fornecedor.query.get_or_404(fornecedor_id) # Buscar o fornecedor com o ID fornecido",
+        "detail": "app.routes.home",
+        "documentation": {}
+    },
+    {
+        "label": "edit_fornecedor",
+        "kind": 2,
+        "importPath": "app.routes.home",
+        "description": "app.routes.home",
+        "peekOfCode": "def edit_fornecedor(fornecedor_id):\n    fornecedor = Fornecedor.query.get_or_404(fornecedor_id) # Buscar o fornecedor com o ID fornecido\n    return render_template('editar_fornecedor.html', fornecedor=fornecedor, fornecedor_id=fornecedor_id)\n@routes_bp.route('/atualizar_fornecedor/<int:fornecedor_id>', methods=['POST'])\ndef update_fornecedor(fornecedor_id):\n    fornecedor = Fornecedor.query.get_or_404(fornecedor_id) # Buscar o fornecedor com o ID fornecido\n# Atualizar os campos do fornecedor com os dados do formulário enviado\n    fornecedor.Fornecedor = request.form['Fornecedor']\n    fornecedor.telefone = request.form['telefone']\n    fornecedor.revendedor = request.form['revendedor']",
+        "detail": "app.routes.home",
+        "documentation": {}
+    },
+    {
+        "label": "update_fornecedor",
+        "kind": 2,
+        "importPath": "app.routes.home",
+        "description": "app.routes.home",
+        "peekOfCode": "def update_fornecedor(fornecedor_id):\n    fornecedor = Fornecedor.query.get_or_404(fornecedor_id) # Buscar o fornecedor com o ID fornecido\n# Atualizar os campos do fornecedor com os dados do formulário enviado\n    fornecedor.Fornecedor = request.form['Fornecedor']\n    fornecedor.telefone = request.form['telefone']\n    fornecedor.revendedor = request.form['revendedor']\n# Salvar as alterações no banco de dados\n    db.session.commit()\n# Redirecionar de volta para a página de fornecedores após a atualização\n    return redirect(url_for('routes.fornecedores'))",
+        "detail": "app.routes.home",
+        "documentation": {}
+    },
+    {
+        "label": "detalhes_fornecedor",
+        "kind": 2,
+        "importPath": "app.routes.home",
+        "description": "app.routes.home",
+        "peekOfCode": "def detalhes_fornecedor(fornecedor_id):\n    fornecedor = Fornecedor.query.get_or_404(fornecedor_id)\n    return render_template('detalhes_fornecedor.html', fornecedor=fornecedor)\n@routes_bp.route('/delete_fornecedor/<int:fornecedor_id>', methods=['POST'])\ndef delete_fornecedor(fornecedor_id):\n    fornecedor = Fornecedor.query.get_or_404(fornecedor_id)\n    db.session.delete(fornecedor) # Excluir o fornecedor do banco de dados\n    db.session.commit()\n    return redirect(url_for('routes.fornecedores'))\n@routes_bp.route('/cadastrar_fornecedor')",
+        "detail": "app.routes.home",
+        "documentation": {}
+    },
+    {
+        "label": "delete_fornecedor",
+        "kind": 2,
+        "importPath": "app.routes.home",
+        "description": "app.routes.home",
+        "peekOfCode": "def delete_fornecedor(fornecedor_id):\n    fornecedor = Fornecedor.query.get_or_404(fornecedor_id)\n    db.session.delete(fornecedor) # Excluir o fornecedor do banco de dados\n    db.session.commit()\n    return redirect(url_for('routes.fornecedores'))\n@routes_bp.route('/cadastrar_fornecedor')\ndef cadastrar_fornecedor():\n    return render_template('cadastrar_fornecedor.html')\n@routes_bp.route('/cadastrar_fornecedor', methods=['GET', 'POST'])\ndef cadastrar_novo_fornecedor():",
+        "detail": "app.routes.home",
+        "documentation": {}
+    },
+    {
+        "label": "cadastrar_fornecedor",
+        "kind": 2,
+        "importPath": "app.routes.home",
+        "description": "app.routes.home",
+        "peekOfCode": "def cadastrar_fornecedor():\n    return render_template('cadastrar_fornecedor.html')\n@routes_bp.route('/cadastrar_fornecedor', methods=['GET', 'POST'])\ndef cadastrar_novo_fornecedor():\n    if request.method == 'POST':\n        nome_fornecedor = request.form['Fornecedor']\n        telefone = request.form['telefone']\n        revendedor = request.form['revendedor']\n# Criar um novo objeto Fornecedor com os dados fornecidos\n        novo_fornecedor = Fornecedor(Fornecedor=nome_fornecedor , telefone=telefone, revendedor=revendedor)",
+        "detail": "app.routes.home",
+        "documentation": {}
+    },
+    {
+        "label": "cadastrar_novo_fornecedor",
+        "kind": 2,
+        "importPath": "app.routes.home",
+        "description": "app.routes.home",
+        "peekOfCode": "def cadastrar_novo_fornecedor():\n    if request.method == 'POST':\n        nome_fornecedor = request.form['Fornecedor']\n        telefone = request.form['telefone']\n        revendedor = request.form['revendedor']\n# Criar um novo objeto Fornecedor com os dados fornecidos\n        novo_fornecedor = Fornecedor(Fornecedor=nome_fornecedor , telefone=telefone, revendedor=revendedor)\n# Adicionar o novo fornecedor ao banco de dados\n        db.session.add(novo_fornecedor)\n        db.session.commit()",
+        "detail": "app.routes.home",
+        "documentation": {}
+    },
+    {
+        "label": "salvar_fornecedor",
+        "kind": 2,
+        "importPath": "app.routes.home",
+        "description": "app.routes.home",
+        "peekOfCode": "def salvar_fornecedor():\n    if request.method == 'POST':\n        nome_fornecedor = request.form['Fornecedor']\n        telefone = request.form['telefone']\n        revendedor = request.form['revendedor']\n# Criar um novo objeto Fornecedor com os dados fornecidos\n        novo_fornecedor = Fornecedor(Fornecedor=nome_fornecedor , telefone=telefone, revendedor=revendedor)\n# Adicionar o novo fornecedor ao banco de dados\n        db.session.add(novo_fornecedor)\n        db.session.commit()",
+        "detail": "app.routes.home",
+        "documentation": {}
+    },
+    {
+        "label": "render_search_fornecedor",
+        "kind": 2,
+        "importPath": "app.routes.home",
+        "description": "app.routes.home",
+        "peekOfCode": "def render_search_fornecedor():\n    return render_template('search_fornecedor.html')\n@routes_bp.route('/search_fornecedor', methods=['POST'])\ndef search_fornecedor():\n    search_term = request.form['search']\n    fornecedores = Fornecedor.query.filter(Fornecedor.Fornecedor.like(f'%{search_term}%')).all()\n    return render_template('fornecedores.html', fornecedores=fornecedores)\n@routes_bp.route('/produtos')\ndef render_produtos():\n# Consulta SQL para obter todos os produtos com seus fornecedores",
+        "detail": "app.routes.home",
+        "documentation": {}
+    },
+    {
+        "label": "search_fornecedor",
+        "kind": 2,
+        "importPath": "app.routes.home",
+        "description": "app.routes.home",
+        "peekOfCode": "def search_fornecedor():\n    search_term = request.form['search']\n    fornecedores = Fornecedor.query.filter(Fornecedor.Fornecedor.like(f'%{search_term}%')).all()\n    return render_template('fornecedores.html', fornecedores=fornecedores)\n@routes_bp.route('/produtos')\ndef render_produtos():\n# Consulta SQL para obter todos os produtos com seus fornecedores\n    produtos = db.session.query(\n    Produto.id.label('IdProduto'),\n    Produto.produto.label('Produto'),",
+        "detail": "app.routes.home",
+        "documentation": {}
+    },
+    {
+        "label": "render_produtos",
+        "kind": 2,
+        "importPath": "app.routes.home",
+        "description": "app.routes.home",
+        "peekOfCode": "def render_produtos():\n# Consulta SQL para obter todos os produtos com seus fornecedores\n    produtos = db.session.query(\n    Produto.id.label('IdProduto'),\n    Produto.produto.label('Produto'),\n    Fornecedor.fornecedor.label('Fornecedor'),\n    Fornecedor.telefone.label('Telefone'),\n    Fornecedor.revendedor.label('Revendedor')\n).join(Fornecedor).all()\n    return render_template('produtos.html', produtos=produtos)",
+        "detail": "app.routes.home",
+        "documentation": {}
+    },
+    {
+        "label": "render_encontra_produto",
+        "kind": 2,
+        "importPath": "app.routes.home",
+        "description": "app.routes.home",
+        "peekOfCode": "def render_encontra_produto():\n    return render_template('encontra_produto.html')\n@routes_bp.route('/encontra_produto', methods=['POST'])\ndef encontra_produto():\n    search_term = request.form['nome_produto']\n# Consulta SQL para encontrar produtos com base no termo de pesquisa\n    produtos = db.session.query(\n    Produto.id.label('IdProduto'),\n    Produto.produto.label('Produto'),\n    Fornecedor.Fornecedor.label('Fornecedor'),",
+        "detail": "app.routes.home",
+        "documentation": {}
+    },
+    {
+        "label": "encontra_produto",
+        "kind": 2,
+        "importPath": "app.routes.home",
+        "description": "app.routes.home",
+        "peekOfCode": "def encontra_produto():\n    search_term = request.form['nome_produto']\n# Consulta SQL para encontrar produtos com base no termo de pesquisa\n    produtos = db.session.query(\n    Produto.id.label('IdProduto'),\n    Produto.produto.label('Produto'),\n    Fornecedor.Fornecedor.label('Fornecedor'),\n    Fornecedor.telefone.label('Telefone'),\n    Fornecedor.revendedor.label('Revendedor')\n).join(Fornecedor).filter(",
+        "detail": "app.routes.home",
+        "documentation": {}
+    },
+    {
+        "label": "app",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "app = create_app()\nif __name__ =='__main__':\n    app.run(debug=True)",
+        "detail": "app",
+        "documentation": {}
+    }
+]
